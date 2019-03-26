@@ -1,5 +1,11 @@
 import {combineReducers} from 'redux';
+import postsReducer from './postsReducer';
 
 export default combineReducers({
-    placeHolder: () => 'tricking Redux to think we have a reducer: will be replaced later'
+    posts: postsReducer
 });
+
+/* reducer rules:
+- needs to be pure, and not reach out
+- must return any value, except undefined
+- must only use the previous state and action to create and NEW state to return */

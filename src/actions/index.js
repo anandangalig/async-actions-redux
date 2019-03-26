@@ -1,6 +1,6 @@
 import jsonPlaceholder from '../api/jsonPlaceholder';
 
-export const fetchPostListActionCreator = () => {
+export const fetchPosts = () => {
     return async function(dispatch, getState) {
         const response = await jsonPlaceholder.get('/posts');
         // manually dispatching the action after getting the response:
