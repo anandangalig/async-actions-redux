@@ -2,11 +2,11 @@ import jsonPlaceholder from '../api/jsonPlaceholder';
 
 export const fetchPosts = () => {
     return async function(dispatch, getState) {
-        const response = await jsonPlaceholder.get('/posts');
+        const response = await jsonPlaceholder.get('/posts');        
         // manually dispatching the action after getting the response:
         dispatch({
             type: 'FETCH_POST_LIST',
-            payload: response
+            payload: response.data
         });
     }
 } 

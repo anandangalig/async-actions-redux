@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import postsReducer from './postsReducer';
 
 export default combineReducers({
+    //state object will look like this:
     posts: postsReducer
 });
 
