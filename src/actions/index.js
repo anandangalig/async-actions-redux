@@ -17,3 +17,13 @@ export const fetchPosts = () => {
 // actionCreator -> action -> dispatch(action) -> MIDDLEWARE(stop/mod/massage the action) -> reducers
 
 // redux-thunk adds an option to return a function(with dispatch, getState capabilities within) from an action creator. Basically provides a safe space to run API requests and pass it back to the dispatcher in form of a plain object.
+
+export const fetchUser = (userId) => {
+    return async function(dispatch, getState) {
+        const response = await jsonPlaceholder.get(`/users/${userId}`);                
+        dispatch({
+            type: 'FETCH_USER',
+            payload: response.data
+        });
+    }
+} 

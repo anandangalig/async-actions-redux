@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux';
 import postsReducer from './postsReducer';
+import usersReducer from './usersReducer';
 
 export default combineReducers({
     //state object will look like this:
-    posts: postsReducer
+    posts: postsReducer,
+    users: usersReducer
 });
 
 /* reducer rules:
