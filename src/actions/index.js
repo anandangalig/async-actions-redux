@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import jsonPlaceholder from '../api/jsonPlaceholder';
 
 export const fetchPosts = () => {
@@ -19,11 +20,15 @@ export const fetchPosts = () => {
 // redux-thunk adds an option to return a function(with dispatch, getState capabilities within) from an action creator. Basically provides a safe space to run API requests and pass it back to the dispatcher in form of a plain object.
 
 export const fetchUser = (userId) => {
-    return async function(dispatch, getState) {
-        const response = await jsonPlaceholder.get(`/users/${userId}`);                
-        dispatch({
-            type: 'FETCH_USER',
-            payload: response.data
-        });
+    return function(dispatch) {
+        _fetchUser(userId, dispatch);
     }
 } 
+// internal function that returns a memoized function to avoid making duplicate network requests
+const _fetchUser = _.memoize(async (userId, dispatch) => {
+    const response = await jsonPlaceholder.get(`/users/${userId}`);                
+    dispatch({
+        type: 'FETCH_USER',
+        payload: response.data
+    });
+});
